@@ -41,25 +41,33 @@ if (stringToEvaluate.includes("+")) {
   } 
   else if (stringToEvaluate.includes("-")) {
     const [num, str] = splitter(stringToEvaluate, "-");
-    const answer = parseFloat(evaluate(num),10) - parseFloat(evaluate(str),10);
+    const answer =
+      parseFloat(evaluate(num), 10) - parseFloat(evaluate(str), 10);
     return answer;
-  } 
-  else if (stringToEvaluate.includes("×")) {
+  } else if (stringToEvaluate.includes("%")) {
+    const [num, str] = splitter(stringToEvaluate, "%");
+    const answer =
+      evaluate([parseFloat(evaluate(num), 10) /100 ,str].join(""));
+      // parseFloat(evaluate(str), 10);
+
+    return answer;
+  } else if (stringToEvaluate.includes("×")) {
     const [num, str] = splitter(stringToEvaluate, "×");
-    const answer = parseFloat(evaluate(num),10) * parseFloat(evaluate(str),10);
- 
+    const answer =
+      parseFloat(evaluate(num), 10) * parseFloat(evaluate(str), 10);
+
     return answer;
-  }
-   else if (stringToEvaluate.includes("÷")) {
+  } else if (stringToEvaluate.includes("÷")) {
     const [num, str] = splitter(stringToEvaluate, "÷");
 
-    const answer = parseFloat(evaluate(num),10) / parseFloat(evaluate(str),10);
+    const answer =
+      parseFloat(evaluate(num), 10) / parseFloat(evaluate(str), 10);
 
     return answer;
-  }
-  else if (stringToEvaluate.includes("^")) {
+  } else if (stringToEvaluate.includes("^")) {
     const [num, str] = splitter(stringToEvaluate, "^");
-    const answer = parseFloat(evaluate(num),10) ** parseFloat(evaluate(str),10);
+    const answer =
+      parseFloat(evaluate(num), 10) ** parseFloat(evaluate(str), 10);
     return answer;
   } else {
     return parseFloat(stringToEvaluate, 10);
